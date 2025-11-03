@@ -15,4 +15,9 @@ Project 1 - Mad Libs Word Game
 Project 2 - Number guessing game  
     I Started by greating the user!  
     I used the import random to be able to get a random number for us to find, Afterwards i defined the secret_number as a randint (random interger) between 1 and 100. Then I prompt the user to guess a number in a certain number of tries.
-    Then I used a while loop as long the numbers of tires was under 10. Then i used a if statment to see if the number was correct, if it was I would give the user the congrats message and break the loop, if its higher or lower it says to try higher or lower and the number of tries left. then i use a else if it wasnt found in under 10 tries. that leads to the game over screen!
+    Then I used a while loop as long the numbers of tires was under 10. Then i used a if statment to see if the number was correct, if it was I would give the user the congrats message and break the loop, if its higher or lower it says to try higher or lower and the number of tries left. then i use a else if it wasnt found in under 10 tries. that leads to the game over screen!  
+  
+Project 3 - Rock, Paper, Scissors, Lizard, Spock  
+    I started by greating the user and explain that we are going to be playing this game.  
+    the First thing i set up was the import random after that i Start by defining the player and computer scores, the number of rounds needed to win and the round counter.  
+    I define the choices and win conditions, then i use a while loop for the game and if, elif and else stamentes to see who wins or if its a draw. after the all the rounds are done i also use a if else to show who wins.
