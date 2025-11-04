@@ -23,7 +23,7 @@ Project 3 - Rock, Paper, Scissors, Lizard, Spock
     I define the choices and win conditions, then i use a while loop for the game and if, elif and else stamentes to see who wins or if its a draw. after the all the rounds are done i also use a if else to show who wins.
 
 Day 2:  
-Project 4 - Hangman
+Project 4 - Hangman  
   I started by greeting the user and explaining the rules of the game, such as having 6 tries and guessing one letter at a time.  
   First, I used the import random module to be able to pick a random word.  
   Then I defined a word_list with all the possible 4-letter animal words. I also defined a list called hangman_stages that holds all the ASCII art for the different stages of the hangman.  
