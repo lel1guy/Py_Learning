@@ -8,7 +8,7 @@ NotebookLM
 Perplexity for projects ideas  
   
 Progress:  
-Day 1:  
+Day 1 (3/11/25):  
 Project 1 - Mad Libs Word Game  
     I started by outlining the goal in comments: to ask a user for random words and use them to build a funny story. The steps I planned were: Greet User, Request Words, Create Story, Display Story, and an optional Save Story step.  
     First, I used print statements to welcome the user, explain the game, and print a separator line ("-"* 90).  
@@ -49,7 +49,7 @@ Project 3 - Rock, Paper, Scissors, Lizard, Spock
     After the while loop finishes (meaning one player has reached 3 wins), I print the final score and a "GAME OVER!" message.  
     I used one last if/else statement to check if the player_score was greater than the computer_score. This determines who is the overall winner, and I print a final congratulations or "Better luck next time" message.  
       
-Day 2:  
+Day 2 (4/11/25):  
 Project 4 - Hangman  
   I started by greeting the user and explaining the rules of the game, such as having 6 tries and guessing one letter at a time.  
   First, I used the import random module to be able to pick a random word.  
@@ -71,7 +71,7 @@ Project 5 - To Do List
     For choice '4', I just print a goodbye message and use the `break` command to exit the `while True` loop, which ends the program.  
     Finally, an `else` statement at the end catches any invalid menu choices and prompts the user to try again.  
   
-Day 3:  
+Day 3 (5/11/25):  
 Project 5 - to do list v2  
     To create to_do_list-v2.py, I started by taking all the logic that was grouped inside the single while True loop and refactoring it by organizing it into functions. This makes the code much cleaner and easier to read.  
     I created a main function that now holds the empty tasks list and the main while True loop. This main function is now the central part of the program.  
@@ -81,4 +81,20 @@ Project 5 - to do list v2
     For choice '2', it calls add_task(tasks). This function now handles getting the input for the new task description, creating the new task dictionary, and appending it to the tasks list.  
     For choice '3', it calls mark_task_complete(tasks). This is a big improvement. Instead of having to copy and paste the code to print all the tasks, this function can now just call view_task(tasks) first. After that, it uses the same try...except block as before to get the task number and set its "completed" value to True.  
     For choice '4', the break command and the final else statement for invalid choices remained inside the main loop's while True, as they control the loop itself.  
-    Finally, at the very end of the file, I added an if __name__ == "__main__": block. This is a standard Python practice that tells the script to run the main() function only when the file is executed directly.
+    Finally, at the very end of the file, I added an if __name__ == "__main__": block. This is a standard Python practice that tells the script to run the main() function only when the file is executed directly.  
+      
+Day 6 (7/11/25):  
+Project 6 - Unit Converter (in Progress)  
+    I started by outlining the goal in the comments: to create a program that can convert measurements from one type to another, handle multiple measurement types, and use a menu.  
+    Following the pattern from my "to do list v2" project, I decided to build this program by organizing all the logic into functions right from the start.  
+    At the very bottom of the file, I added the if __name__ == "__main__": block. This is the standard way to make the script run my main() function when the file is executed.  
+    Inside the main() function, I first used print statements to welcome the user. I then put the main program flow inside a while True loop to make it keep running.  
+    Inside this loop, I first call a function I made, show_menu(), which just handles printing the list of conversion options (Length, Weight, Temperature, etc.). Immediately after, I call another function, get_user_choice().  
+    This get_user_choice() function is a reusable helper. It uses its own while True loop and a try...except ValueError block to make sure the user enters a valid integer (from 1 to 5). It won't let the program continue until it gets a valid choice.  
+    Back in the main() loop, I used a series of if and elif statements to handle the choice returned from get_user_choice(). For choices '1' through '4', I just printed a confirmation message (like "Length Conversion Chossen") and added a #todo: comment to remember to implement the logic later. For choice '5', I printed a "GoodBye!" message.  
+    To prepare for the conversion logic, I also built several other helper functions:  
+    validate_numeric_input(): A general-purpose function that uses try...except to get a float (a number with decimals) from the user and reject invalid text.  
+    get_conversion_value(): A simple function that uses validate_numeric_input() to ask for the number the user wants to convert.  
+    get_unit_selection(): Another helper that takes a list of units and asks the user to pick one by its number.  
+    Finally, I started building the actual logic for the first choice. I created a lenght_conversion() function (which would be called by main when choice == 1). This function defines a list of all the units (like "inches", "feet", etc.) and then calls my helper functions to get the value, the from_unit, and the to_unit.  
+    To do the math, I created convert_length(). My plan here was to use a central base unit (meters). I created a dictionary called to_meters that holds the conversion factor to turn any unit into meters. I also created a from_meters dictionary to convert from meters into any other unit. This way, any conversion is a two-step process: [Original Unit] -> Meters -> [Target Unit]
