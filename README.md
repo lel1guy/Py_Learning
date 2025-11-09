@@ -1,4 +1,4 @@
-# Py_Learning
+# My Python Journey
 Here I will document my Python learning journey form zero experience. I'll be focusing on project-based learning because I learn better by doing.   I'm also gonna be using AI to help me learn.  
 I'm Using:  
 python 3.14  
