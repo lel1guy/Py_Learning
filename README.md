@@ -84,7 +84,7 @@ Project 5 - to do list v2
     Finally, at the very end of the file, I added an if __name__ == "__main__": block. This is a standard Python practice that tells the script to run the main() function only when the file is executed directly.  
       
 Day 6 (7/11/25):  
-Project 6 - Unit Converter (in Progress)  
+Project 6 - Unit Converter part1  
     I started by outlining the goal in the comments: to create a program that can convert measurements from one type to another, handle multiple measurement types, and use a menu.  
     Following the pattern from my "to do list v2" project, I decided to build this program by organizing all the logic into functions right from the start.  
     At the very bottom of the file, I added the if __name__ == "__main__": block. This is the standard way to make the script run my main() function when the file is executed.  
@@ -97,4 +97,25 @@ Project 6 - Unit Converter (in Progress)
     get_conversion_value(): A simple function that uses validate_numeric_input() to ask for the number the user wants to convert.  
     get_unit_selection(): Another helper that takes a list of units and asks the user to pick one by its number.  
     Finally, I started building the actual logic for the first choice. I created a lenght_conversion() function (which would be called by main when choice == 1). This function defines a list of all the units (like "inches", "feet", etc.) and then calls my helper functions to get the value, the from_unit, and the to_unit.  
-    To do the math, I created convert_length(). My plan here was to use a central base unit (meters). I created a dictionary called to_meters that holds the conversion factor to turn any unit into meters. I also created a from_meters dictionary to convert from meters into any other unit. This way, any conversion is a two-step process: [Original Unit] -> Meters -> [Target Unit]
+    To do the math, I created convert_length(). My plan here was to use a central base unit (meters). I created a dictionary called to_meters that holds the conversion factor to turn any unit into meters. I also created a from_meters dictionary to convert from meters into any other unit. This way, any conversion is a two-step process: [Original Unit] -> Meters -> [Target Unit]  
+      
+Day 7 (8/11/25):  
+Project 6 - Unit Converter part2  
+    First, I implemented all the missing conversion logic. My main() function's if/elif block previously just had #todo: comments. I updated it so that choices '2', '3', and '4' now call their own dedicated functions: weight_conversion(), temperature_conversion(), and volume_conversion().  
+    For the Weight and Volume converters, I followed the exact same pattern I used for length_conversion().  
+    I created convert_weight() (using kilograms as the base) and convert_volume() (using liters as the base).  
+    A big improvement I made was inside the conversion functions (like convert_length()). Instead of manually creating the from_meters dictionary, I now create it dynamically using a dictionary comprehension ({unit: 1 / factor for ...}). This is much cleaner and less error-prone, so I used this same logic for from_kilograms and from_liters.  
+    For the Temperature converter, the logic was different. I couldn't use a simple dictionary of factors.  
+    I created convert_temperature() which uses if/elif statements to first convert the input unit to a base unit (Celsius).  
+    It then uses another set of if/elif statements to convert from Celsius to the target unit.  
+    I also added a check at the beginning to warn the user if they enter a temperature that's below absolute zero.  
+    I also added a major new feature: Conversion History.  
+    I started by creating a global list at the top of the file called conversion_history = [].  
+    I created a new function, add_to_history(). This function takes all the details of a conversion (like the type, value, and units) and appends them as a dictionary to the conversion_history list.  
+    I made sure to call this add_to_history() function at the end of every successful conversion (in length_conversion(), weight_conversion(), etc.).  
+    To let the user see the history, I created a show_history() function. This function prints the last 10 conversions or a message if the history is empty.  
+    This new feature meant I had to update my menu. I changed show_menu() to add "5. View History" and moved "Quit" to option 6. I then updated the main() function's if/elif block to call show_history() for choice 5 and break the loop for choice 6.  
+    Finally, I fixed several bugs from the v1 file.  
+    I fixed the typo in the function name lenght_conversion() (it's now length_conversion()).  
+    I fixed the buggy f-string in validate_numeric_input() that wasn't correctly showing the max_value.  
+    I fixed the typos and math errors inside convert_length() (like meters + value and return_meter) so the calculation actually runs and returns the correct result.  
